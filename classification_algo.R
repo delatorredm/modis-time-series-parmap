@@ -55,13 +55,13 @@ dfAll$TYPENUM <- shpSub$TYPENUM
 
 library(caret)
 
-training <- createDataPartition(dfAll$TYPENUM, p = 0.7, list = FALSE)
+training <- createDataPartition(dfAll$TYPENUM, p = 0.6, list = FALSE)
 dfSubset <- dfAll[training,]  
 
 # Model and Classification  
 modFit <- train(as.factor(TYPENUM) ~ ., method = "svmLinear2", data = dfSubset)
 beginCluster()
-preds <- clusterR(img, raster::predict, args = list(model = modFit))
+preds <- clusterR(sta, raster::predict, args = list(model = modFit))
 endCluster()
 plot(preds)
 

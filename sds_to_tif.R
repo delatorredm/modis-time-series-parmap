@@ -60,3 +60,13 @@ for (i in 1:length(filename)){
   sds <- get_subdatasets(files[i])
   gdal_translate(sds[1], dst_dataset = filename[i])
 }
+
+
+rast <- raster("MOD13A3.A2017121.1_km_monthly_EVI.tif")
+plot(rast)
+
+#rast <- raster("MOD13A3.A2010182.1_km_monthly_pixel_reliability.tif")
+#plot(rast)
+
+p <- shapefile('C:\\Users\\User\\Desktop\\NSO_Provincial.shp')
+plot(p, add=TRUE)
